@@ -6,7 +6,7 @@ class WorkoutsController < ApplicationController
    end
 
    def create
-      workout = Workout.create(workoutParams)
+      workout = Workout.create(workoutParams(:name, :muscleGroup, :sets, :exercisesPerSet))
 
       if workout.valid?
          render json: WorkoutSerializer.new(workouts).serialized_json
