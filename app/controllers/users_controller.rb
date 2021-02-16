@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(userParams)
+    user = User.create(userParams(:username, :password))
 
     if user.valid?
         render json: UserSerializer.new(user).serialized_json
