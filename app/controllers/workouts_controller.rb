@@ -36,5 +36,4 @@ class WorkoutsController < ApplicationController
    def workoutParams(*args)
       params.require(:workout).permit(*args)
    end
-
 end
