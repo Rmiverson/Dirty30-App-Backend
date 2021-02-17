@@ -1,5 +1,5 @@
 class WorkoutsController < ApplicationController
-  before_action :require_login
+  skip_before_action :authorized
   
    def index
       workouts = Workout.all
@@ -11,7 +11,7 @@ class WorkoutsController < ApplicationController
       workout = Workout.create(workoutParams(:name, :muscleGroup, :sets, :exercisesPerSet))
 
       if workout.valid?
-         render json: WorkoutSerializer.new(workouts).serialized_json
+         render json: WorkoutSerializer.new(workout).serialized_json
       else
          render json: {error: "Please fill in all fields!!!"}
       end
@@ -35,9 +35,5 @@ class WorkoutsController < ApplicationController
 
    def workoutParams(*args)
       params.require(:workout).permit(*args)
-   end
-
-   def require_login
-    return head(:forbidden) unless session.include? :user_id
    end
 end
