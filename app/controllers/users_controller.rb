@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :authorized, only: [:index, :create]
 
   def index 
     users = User.all
@@ -10,7 +11,8 @@ class UsersController < ApplicationController
     user = User.create(userParams(:username, :password))
 
     if user.valid?
-        render json: UserSerializer.new(user).serialized_json
+        my_token = encode_token({user_id: user.id})
+        render json: {user: UserSerializer.new(user).serialized_json, token: my_token}
     else
         render json: {error: "Username must be unique!!!"}
     end
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
 
   private
 
+  #maybe sketchy *args
   def userParams(*args)
     params.require(:user).permit(*args)
   end
