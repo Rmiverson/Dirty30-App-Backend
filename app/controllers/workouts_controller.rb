@@ -1,4 +1,6 @@
 class WorkoutsController < ApplicationController
+  before_action :require_login
+  
    def index
       workouts = Workout.all
 
@@ -33,5 +35,9 @@ class WorkoutsController < ApplicationController
 
    def workoutParams(*args)
       params.require(:workout).permit(*args)
+   end
+
+   def require_login
+    return head(:forbidden) unless session.include? :user_id
    end
 end

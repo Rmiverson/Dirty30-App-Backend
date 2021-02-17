@@ -4,11 +4,5 @@ class User < ApplicationRecord
 
    validates_uniqueness_of :username
 
-  #  after_initalize :set_defaults
-
-  # def set_defaults
-  #   self.firstname = null if self.new_record?
-  #   self.height = null
-  #   self.weight = null 
-  # end
+   has_secure_password
 end
