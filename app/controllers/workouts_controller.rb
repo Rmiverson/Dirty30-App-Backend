@@ -7,6 +7,12 @@ class WorkoutsController < ApplicationController
       render json: WorkoutSerializer.new(workouts).serialized_json
    end
 
+   def show
+      workout = Workout.find(params[:id])
+
+      render json: WorkoutSerializer.new(workout).serialized_json
+   end
+
    def create
       #byebug
       workout = Workout.create(workoutParams(:name, :muscleGroup, :sets, :exercisesPerSet))
@@ -33,10 +39,8 @@ class WorkoutsController < ApplicationController
       render json: WorkoutSerializer.new(workout).serialized_json
    end
 
-   def delete
-      Workout.find(params[:id]).destroy
-
-      render json: {message: "Workout deleted!!!"}
+   def destroy
+      render json: Workout.find(params[:id]).destroy
    end
 
    private
