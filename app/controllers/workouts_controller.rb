@@ -8,7 +8,15 @@ class WorkoutsController < ApplicationController
    end
 
    def create
+      #byebug
       workout = Workout.create(workoutParams(:name, :muscleGroup, :sets, :exercisesPerSet))
+
+      #create join model for each exercise
+      params[:exercises].each {|exercise| WorkoutExercise.create(workout_id: workout[:id], exercise_id: exercise[:id])}
+
+      #create join model for user_workout
+      UserWorkout.create(user_id: params[:user_id], workout_id: workout[:id])
+
 
       if workout.valid?
          render json: WorkoutSerializer.new(workout).serialized_json

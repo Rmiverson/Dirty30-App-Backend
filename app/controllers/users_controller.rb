@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   private
 
-  #maybe sketchy *args
+  #maybe sketchy *args?
   def userParams(*args)
     params.require(:user).permit(*args)
   end
