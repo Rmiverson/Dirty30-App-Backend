@@ -13,28 +13,28 @@ Before you begin, ensure you have met the following requirements:
 - You have <Bundler> installed
 - You have a Windows/Mac machine
 
-#Installing Dirty30
+# Installing Dirty30
 
 To install the app, follow these steps:
 
 1. Navigate to (https://github.com/Rmiverson/Dirty30-App-Backend) to clone the backend of the project.
 2. Create a directory where you would like to store the file.
 3. Navigate into that directory and use the command: `git clone <project-SSH>`
+4. follow installation instructions for the frontend [here](https://github.com/zoekirsh/Dirty30-App-Frontend)
 
-#Using DIRTY30
+# Using DIRTY30
 
 1. bundle install
 2. rails db:migrate
 3. rails db:seed
 4. rails s
-5. follow installation instructions for the frontend [here](https://github.com/zoekirsh/Dirty30-App-Frontend)
 
-#Contributors
+# Contributors
 This project was created by:
 
 @rmiverson
 &
 @zoekirsh
 
-#License
+# License
 thisproject uses the following license: Learn.co Educational Content License.
