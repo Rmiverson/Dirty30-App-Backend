@@ -32,9 +32,9 @@ To install the app, follow these steps:
 # Contributors
 This project was created by:
 
-@rmiverson
+[@rmiverson](https://github.com/Rmiverson)
 &
-@zoekirsh
+[@zoekirsh](https://github.com/zoekirsh)
 
 # License
 thisproject uses the following license: Learn.co Educational Content License.
